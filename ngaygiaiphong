@@ -1,0 +1,36 @@
+local function createNotify(Text, Duration)
+    local CoreGui = game:GetService("StarterGui")
+    CoreGui:SetCore("ChatMakeSystemMessage", {
+        Text = Text,
+        Color = Color3.fromRGB(255, 221, 0),
+        Font = Enum.Font.SourceSansBold,
+        FontSize = Enum.FontSize.Size24
+    })
+    
+    local Billboard = Instance.new("BillboardGui")
+    Billboard.Name = "Notify50Nam"
+    Billboard.Size = UDim2.new(0, 400, 0, 50)
+    Billboard.StudsOffset = Vector3.new(0, 5, 0)
+    Billboard.AlwaysOnTop = true
+    Billboard.Adornee = workspace.CurrentCamera
+
+    local TextLabel = Instance.new("TextLabel", Billboard)
+    TextLabel.Size = UDim2.new(1, 0, 1, 0)
+    TextLabel.BackgroundTransparency = 1
+    TextLabel.Text = Text
+    TextLabel.TextColor3 = Color3.fromRGB(255, 221, 0)
+    TextLabel.Font = Enum.Font.SourceSansBold
+    TextLabel.TextScaled = true
+    TextLabel.TextStrokeTransparency = 0.7
+
+    Billboard.Parent = game:GetService("CoreGui")
+    
+    task.delay(Duration or 5, function()
+        Billboard:Destroy()
+    end)
+end
+
+--// Thông báo trên màn hình và chat
+createNotify("KỈ NIỆM 50 NĂM", 4)
+wait(1.5)
+createNotify("<NGÀY GIẢI PHÓNG MIỀN NAM , THỐNG NHẤT ĐẤT NƯỚC>", 5)
